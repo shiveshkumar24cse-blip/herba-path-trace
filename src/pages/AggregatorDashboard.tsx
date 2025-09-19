@@ -157,7 +157,6 @@ export default function AggregatorDashboard() {
       // Generate batch ID
       const batchId = `BATCH_${Date.now()}`;
       const qrCode = generateQRCode({ type: 'batch', batchId, herbId: batchForm.herb_id });
-      const qrCode = generateQRCode({ type: 'batch', batchId, herbId: batchForm.herb_id });
 
       // Create batch
       const { data: newBatch, error: batchError } = await supabase

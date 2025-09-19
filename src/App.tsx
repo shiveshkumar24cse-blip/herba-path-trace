@@ -7,6 +7,10 @@ import { AuthProvider, useAuth } from "@/hooks/useAuth";
 import { AuthForm } from "@/components/auth/AuthForm";
 import AggregatorDashboard from "./pages/AggregatorDashboard";
 import ConsumerPortal from "./pages/ConsumerPortal";
+import LabPortal from "./pages/LabPortal";
+import FactoryPortal from "./pages/FactoryPortal";
+import AdminPortal from "./pages/AdminPortal";
+import CollectorPortal from "./pages/CollectorPortal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -91,6 +95,38 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <ConsumerPortal />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/lab" 
+        element={
+          <ProtectedRoute allowedRoles={['lab', 'admin']}>
+            <LabPortal />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/factory" 
+        element={
+          <ProtectedRoute allowedRoles={['factory', 'admin']}>
+            <FactoryPortal />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/collector" 
+        element={
+          <ProtectedRoute allowedRoles={['farmer', 'wild_collector', 'admin']}>
+            <CollectorPortal />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin" 
+        element={
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AdminPortal />
           </ProtectedRoute>
         } 
       />
